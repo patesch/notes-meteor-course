@@ -6,23 +6,7 @@ import { mount } from 'enzyme';
 
 import { NoteList } from './NoteList';
 
-const notes = [
-  {
-    _id: 'noteId1',
-    title: 'Test title',
-    body: '',
-    updateAt: 0,
-    userId: 'userId1'
-  }, {
-    _id: 'noteId2',
-    title: '',
-    body: 'Something is here',
-    updateAt: 0,
-    userId: 'userId2'
-  }
-];
-
-const emptyNoteList = [];
+import { notes, emptyNoteList } from '../fixtures/fixtures';
 
 if (Meteor.isClient) {
 
