@@ -1,16 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-export default class Login extends React.Component {
+// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
+import Link from '../routes/link';
+
+import { withTracker } from 'meteor/react-meteor-data';
+
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: ''
     };
     if (Meteor.loggingIn())
-      window.browserHistory.push('/dashboard');
+      props.history.push('/dashboard');
   }
   onSubmit(e) {
     e.preventDefault();
@@ -18,15 +23,12 @@ export default class Login extends React.Component {
     let email = this.refs.email.value.trim();
     let password = this.refs.password.value.trim();
 
-    Meteor.loginWithPassword({email}, password, (err) => {
+    this.props.loginWithPassword({email}, password, (err) => {
       if (!!err) {
         this.setState({error: err.reason});
-        setTimeout(()=>{
-          this.setState({error: ''});
-        },3000);
-        // alert('Error message: '+err.message);
+        setTimeout(()=>this.setState({error: ''}), 3000);
       } else {
-        window.browserHistory.push('/dashboard');
+        this.props.history.push('/dashboard');
       }
     });
   }
@@ -41,7 +43,8 @@ export default class Login extends React.Component {
               <input type="password" ref="password" name="password" placeholder="Password"/>
               <button className="button">Login</button>
             </form>
-            <Link to="/signup">Need an account?</Link>
+            {/* <Link to="/signup" location={{pathname: "/signup"}}>Need an account?</Link> */}
+            <Link href="/signup" history={this.props.history}>Need an account?</Link>
           </div>
         </div>
     );
@@ -49,4 +52,11 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
+  loginWithPassword: PropTypes.func.isRequired
 };
+
+export default withTracker(()=>{
+  return {
+    loginWithPassword: Meteor.loginWithPassword
+  };
+})( Login );

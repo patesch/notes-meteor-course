@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Accounts } from 'meteor/accounts-base';
 
-export default class Signup extends React.Component {
+// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
+// import { withRouter, Link as RouterLink } from 'react-router';
+import Link from '../routes/link';
+
+import { Accounts } from 'meteor/accounts-base';
+import { withTracker } from 'meteor/react-meteor-data';
+
+export class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,28 +24,22 @@ export default class Signup extends React.Component {
 
     if (password.length < 9 ) {
       this.setState({error: 'Password must be more than 8 characters long'});
-      setTimeout(()=> {this.setState({error: ''});}, 3000);
+      // setTimeout(()=>this.setState({error: ''}), 3000);
       return;
     } else if (password.length > 20 ) {
       this.setState({error: 'Password must be at most 20 characters long'});
-      setTimeout(()=> {this.setState({error: ''});}, 3000);
+      // setTimeout(()=>this.setState({error: ''}), 3000);
       return;
     }
 
-    Accounts.createUser({email, password}, (err) => {
-      // console.log('Signup callback', err);
+    this.props.createUser({email, password}, (err) => {
       if (!!err) {
         this.setState({error: err.reason});
-        setTimeout(()=>{
-          this.setState({error: ''});
-        },3000);
-        // alert('Error message: '+err.message);
+        // setTimeout(()=>this.setState({error: ''}), 3000);
+      } else {
+        this.setState({error: ''});
       }
     });
-
-    // this.setState({
-    //   error: 'Something went wrong'
-    // });
   }
   render() {
     return (
@@ -52,7 +52,8 @@ export default class Signup extends React.Component {
             <input type="password" ref="password" name="password" placeholder="Password"/>
             <button className="button">Create Account</button>
           </form>
-          <Link className="" to="/">Have an account?</Link>
+          {/* <Link className="" to="/">Have an account?</Link> */}
+          <Link href="/" history={this.props.history}>Have an account?</Link>
         </div>
       </div>
     );
@@ -60,4 +61,11 @@ export default class Signup extends React.Component {
 }
 
 Signup.propTypes = {
+  createUser: PropTypes.func.isRequired
 };
+
+export default withTracker(()=>{
+  return {
+    createUser: Accounts.createUser
+  };
+})( Signup );

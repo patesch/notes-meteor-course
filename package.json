@@ -1,8 +1,10 @@
 {
-  "name": "short-lnk",
+  "name": "notes",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "test": "meteor test --driver-package=practicalmeteor:mocha",
+    "test-full": "meteor test --full-app --driver-package=practicalmeteor:mocha"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
@@ -11,6 +13,7 @@
     "moment": "^2.19.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -18,5 +21,11 @@
   },
   "engines": {
     "node": "8.8.1"
+  },
+  "devDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "expect": "^1.20.2",
+    "react-addons-test-utils": "^15.6.2"
   }
 }
