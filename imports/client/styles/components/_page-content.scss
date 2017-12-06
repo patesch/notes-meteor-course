@@ -2,4 +2,15 @@
   max-width: $site-max-width;
   margin: 0 auto;
   padding: $space;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-content__list {
+  flex-grow: 2;
+  flex-shrink: 2;
+}
+.page-content__editor {
+  flex-grow: 6;
+  flex-shrink: 6;
 }

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 export default function Link(props) {
     const { href, history } = props;
     return (<a
+        className="link"
         href={href}
         onClick={event => {
             event.preventDefault();

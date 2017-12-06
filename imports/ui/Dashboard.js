@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PrivateHeader from './PrivateHeader';
 import NoteListHeader from './NoteListHeader';
 import NoteList from './NoteList';
+import Editor from './Editor';
 
 // import history from '../routes/history';
 
@@ -35,15 +36,22 @@ export class Dashboard extends React.Component {
   componentWillMount() {
     // console.log('componentWillMount:history',this.props.history);
     // console.log('componentWillMount:location', location);
-    this.props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
+    // this.props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
   }
   render () {
+    this.props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
+    
     return (
       <div>
-        <PrivateHeader title="Dashboard" />
+        <PrivateHeader title="Dashboard" history={this.props.history} />
         <div className="page-content">
-          <NoteListHeader/>
-          <NoteList/>
+          <div className="page-content__list">
+            <NoteListHeader/>
+            <NoteList/>
+          </div>
+          <div className="page-content__editor">
+            <Editor/>
+          </div>
         </div>
       </div>
     );

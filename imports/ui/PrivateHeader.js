@@ -5,6 +5,8 @@ import { Accounts } from 'meteor/accounts-base';
 // import { createContainer } from 'meteor/react-meteor-data';
 import { withTracker, createContainer } from 'meteor/react-meteor-data';
 
+import Link from '../routes/link';
+
 // ES6 Container Component
 // export default class PrivateHeader extends React.Component {
 //   onLogout () {
@@ -26,7 +28,8 @@ export const PrivateHeader = (props) => {
   return (
     <div className="header">
       <div className="header__content">
-        <h1 className="header__title">{props.title}</h1>
+        {/* <h1 className="header__title">{props.title}</h1> */}
+        <h1 className="header__title"><Link href="/dashboard" history={props.history}>{props.title}</Link></h1>
         <button className="button button--link-text" onClick={() => props.handleLogout() }>Logout</button>
       </div>
     </div>
@@ -42,6 +45,7 @@ export const PrivateHeader = (props) => {
 };
 
 PrivateHeader.propTypes = {
+  history: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   handleLogout: PropTypes.func.isRequired
 };
