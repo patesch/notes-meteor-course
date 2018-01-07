@@ -10,6 +10,7 @@ import {} from './../imports/startup/simple-schema-configuration';
 
 Tracker.autorun((c) => {
   const isAuthenticated = !!Meteor.userId();
+  // console.log('isAuthenticated',isAuthenticated);
   onAuthChange(isAuthenticated);
 });
 

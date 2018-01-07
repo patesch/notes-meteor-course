@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Accounts } from 'meteor/accounts-base';
 
+// import { Meteor } from 'meteor/meteor';
+
 // import { createContainer } from 'meteor/react-meteor-data';
 import { withTracker, createContainer } from 'meteor/react-meteor-data';
 
@@ -53,7 +55,10 @@ PrivateHeader.propTypes = {
 // export default createContainer(() => {
 export default withTracker(() => {
   return {
-    handleLogout: () => Accounts.logout()
+    handleLogout: () => {
+      Accounts.logout();
+      // console.log('Meter userId', Meteor.userId());
+    }
   };
 })( PrivateHeader );
 // }, PrivateHeader );
