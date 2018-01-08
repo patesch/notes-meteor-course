@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;  
 }
 
 html {
@@ -9,6 +10,8 @@ html {
 }
 
 body {
+  background-color: $body-background-color;
+  color: $body-default-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
 }
@@ -31,7 +34,7 @@ p {
 }
 
 a {
-  color: black;
+  color: $body-default-color;
 }
 
 ul {

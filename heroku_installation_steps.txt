@@ -1,0 +1,55 @@
+# ###############################
+# Deployment on HEROKU - STEPS
+ 1. Create new Heroku App
+ 2. Setup the buildpack for Meteor
+ 3. Setup MongoLab db
+ 4. Configure ROOT_URL env variable
+ 5. Set new version in the package.json
+ 6. Commit and deploy (via git push)
+
+ # Step 1. Create new Heroku App
+   $ heroku create short-lnk-patesch
+   https://short-lnk-patesch.herokuapp.com/ | https://git.heroku.com/short-lnk-patesch.git
+
+   $ git remote -v
+   heroku  https://git.heroku.com/short-lnk-patesch.git (fetch)
+   heroku  https://git.heroku.com/short-lnk-patesch.git (push)
+   origin  git@github.com:patesch/short-lnk-meteor-course.git (fetch)
+   origin  git@github.com:patesch/short-lnk-meteor-course.git (push)
+
+ # Step 2. Setup the buildpack for Meteor
+   $ heroku buildpacks:set https://github.com/AdmitHub/meteor-buildpack-horse.git
+   Buildpack set. Next release on short-lnk-patesch will use https://github.com/AdmitHub/meteor-buildpack-horse.git.
+   Run git push heroku master to create a new release using this buildpack.
+
+ # Step 3. Setup MongoLab db
+   $ heroku addons:create mongolab:sandbox
+   Creating mongolab:sandbox on short-lnk-patesch... free
+   Welcome to mLab.  Your new subscription is being created and will be available shortly.  Please consult the mLab Add-on Admin UI to check on its progress.
+   Created mongolab-transparent-53430 as MONGODB_URI
+   Use heroku addons:docs mongolab to view documentation
+
+ # Step 4. Configure ROOT_URL env variable
+   $ heroku config
+   === short-lnk-patesch Config Vars
+   MONGODB_URI: mongodb://heroku_mk3t20kg:34rtm244mj10hph89s7dh63tbe@ds113626.mlab.com:13626/heroku_mk3t20kg
+
+   # AND
+
+   $ heroku config:set ROOT_URL="https://short-lnk-patesch.herokuapp.com/"
+   Setting ROOT_URL and restarting short-lnk-patesch... done, v4
+   ROOT_URL: https://short-lnk-patesch.herokuapp.com/
+
+   # Step 5. Set new version in the package.json
+     $ meteor node -v
+     v8.8.1
+
+     # Add the node package entry in package.json for node engine version
+     ...},
+       "engines": {
+       "node": "8.8.1"
+       }
+
+   # 6. Commit and deploy (via git push)
+     $ git push heroku master
+# #######################################################

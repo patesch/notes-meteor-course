@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import PrivateHeader from './PrivateHeader';
-import NoteListHeader from './NoteListHeader';
 import NoteList from './NoteList';
 import Editor from './Editor';
 
@@ -50,13 +49,12 @@ export class Dashboard extends React.Component {
 
     return (
       <div>
-        <PrivateHeader title="Dashboard" history={this.props.history} />
+        <PrivateHeader title="Notes" history={this.props.history} />
         <div className="page-content">
-          <div className="page-content__list">
-            <NoteListHeader/>
+          <div className="page-content__sidebar">
             <NoteList/>
           </div>
-          <div className="page-content__editor">
+          <div className="page-content__main">
             <Editor history={this.props.history}/>
           </div>
         </div>

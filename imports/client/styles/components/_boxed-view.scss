@@ -1,6 +1,5 @@
 // BEM  Pattern
 .boxed-view {
-  background: $boxed-view-overlay-bg;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +18,7 @@
 
 .boxed-view__box {
   background-color: $boxed-view-bg;
+  border: 1px solid $boxed-view-border-color;
   padding: 2.4rem;
   text-align: center;
   width: 24rem;

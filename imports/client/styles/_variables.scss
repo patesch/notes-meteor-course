@@ -1,5 +1,5 @@
 // Colors
-$brand-primary: #5b4681;
+$brand-primary: #397ab1; // #5b4681;
 $purple: #5b4681;
 $grey: #dddddd;
 $light-grey: #f9f9f9;
@@ -9,7 +9,7 @@ $special-grey: #e8e8e8;
 // Spacing
 $space: 1.3rem;
 $input-spacing: 1rem;
-$site-max-width: 50rem;
+$site-max-width: 100rem;
 
 // Font sizes
 $base-font-size: 1.4rem;
@@ -19,9 +19,14 @@ $large-font-size: 2.4rem;
 // Font families
 $base-font-family: Helvetica, Arial, sans-serif;
 
+// body
+$body-default-color: #333333 ;
+$body-background-color: $light-grey;
+
 // header
 $header-bg: $brand-primary;
 $header-color: white;
+$header-height: 6rem;
 
 // Form inputs
 $input-border: $grey;
@@ -43,6 +48,7 @@ $button-pill-font-size: $small-font-size;
 // Boxed view
 $boxed-view-overlay-bg: $grey;
 $boxed-view-bg: white;
+$boxed-view-border-color: $grey;
 
 // Item
 $item-bg: $light-grey;
@@ -50,3 +56,8 @@ $item-border: darken($item-bg, 8%);
 
 // item text Color
 $item-text-color: $dark-grey;
+
+// Page content
+$page-content-sitebar-width: 30rem;
+$page-content-main-width: calc(#{$site-max-width} - #{$page-content-sitebar-width});
+$page-content-height: calc(100vh - #{$header-height});

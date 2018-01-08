@@ -1,0 +1,82 @@
+D:\Courses\Udemy\Meteor-React\meteor-projects\notes>git push heroku master
+Counting objects: 191, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (173/173), done.
+Writing objects: 100% (191/191), 48.27 KiB | 3.22 MiB/s, done.
+Total 191 (delta 87), reused 34 (delta 1)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote: -----> Installing meteor
+remote: Downloading Meteor distribution
+remote:
+remote: Meteor 1.6.0.1 has been installed in your home directory (~/.meteor).
+remote:
+remote: Now you need to do one of the following:
+remote:
+remote:   (1) Add "$HOME/.meteor" to your path, or
+remote:   (2) Run this command as root:
+remote:         cp "/app/tmp/cache/meteor/.meteor/packages/meteor-tool/1.6.0_1/mt-os.linux.x86_64/scripts/admin/launch-meteor" /usr/bin/meteor
+remote:
+remote: Then to get started, take a look at 'meteor --help' or see the docs at
+remote: docs.meteor.com.
+remote: -----> Target Meteor version: Meteor 1.6
+remote: -----> Checking if this meteor version supports --server-only
+remote: -----> Using node: v8.8.1
+remote: ----->    and npm: 5.4.2
+remote: added 194 packages in 8.16s
+remote: -----> Building Meteor app with ROOT_URL: https://notes-patesch.herokuapp.com/
+remote: -----> Moving built slug to /tmp/build_65f4677785d0ef129012fafac01544df/.meteor/heroku_build/app
+remote: -----> Installing npm production dependencies on built slug
+remote:
+remote: > fibers@2.0.0 install /tmp/build_65f4677785d0ef129012fafac01544df/.meteor/heroku_build/app/programs/server/node_modules/fibers
+remote: > node build.js || nodejs build.js
+remote:
+remote: `linux-x64-57` exists; testing
+remote: Binary is fine; exiting
+remote:
+remote: > meteor-dev-bundle@0.0.0 install /tmp/build_65f4677785d0ef129012fafac01544df/.meteor/heroku_build/app/programs/server
+remote: > node npm-rebuild.js
+remote:
+remote: {
+remote:   "meteor-dev-bundle": "0.0.0",
+remote:   "npm": "5.4.2",
+remote:   "ares": "1.10.1-DEV",
+remote:   "cldr": "31.0.1",
+remote:   "http_parser": "2.7.0",
+remote:   "icu": "59.1",
+remote:   "modules": "57",
+remote:   "nghttp2": "1.25.0",
+remote:   "node": "8.8.1",
+remote:   "openssl": "1.0.2l",
+remote:   "tz": "2017b",
+remote:   "unicode": "9.0",
+remote:   "uv": "1.15.0",
+remote:   "v8": "6.1.534.42",
+remote:   "zlib": "1.2.11"
+remote: }
+remote: npm WARN meteor-dev-bundle@0.0.0 No description
+remote: npm WARN meteor-dev-bundle@0.0.0 No repository field.
+remote: npm WARN meteor-dev-bundle@0.0.0 No license field.
+remote:
+remote: added 124 packages in 4.798s
+remote: -----> Adding PATH environment
+remote: -----> Running extras
+remote: -----> Adding profile script to resolve MONGO_URL from mongolab addon
+remote: -----> Adding profile script to resolve ROOT_URL from heroku app name
+remote: -----> Discovering process types
+remote:        Procfile declares types     -> (none)
+remote:        Default types for buildpack -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 32.3M
+remote: -----> Launching...
+remote:        Released v5
+remote:        https://notes-patesch.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/notes-patesch.git
+ * [new branch]      master -> master
+
+D:\Courses\Udemy\Meteor-React\meteor-projects\notes>
