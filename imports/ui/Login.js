@@ -16,9 +16,9 @@ export class Login extends React.Component {
     };
     if (Meteor.userId()) {
       props.history.push('/dashboard');
-      console.log('Login constructor: user is logged in -> redirect to Dashboard page');
+      // console.log('Login constructor: user is logged in -> redirect to Dashboard page');
     } else {
-      console.log('Login constructor: user is not logged in -> kept on Login page');
+      // console.log('Login constructor: user is not logged in -> kept on Login page');
     }
   }
   onSubmit(e) {
