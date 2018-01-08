@@ -6,17 +6,41 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 import { Notes } from '../api/notes';
 
+import history from '../routes/history';
+
 // Create named export Editor that is an ES6 class component
 export class Editor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      body: ''
+    };
+  }
+  componentDidUpdate(prevProps,prevState){
+    const currentNoteid = this.props.note ? this.props.note._id : undefined;
+    const prevNoteid =  prevProps.note ? prevProps.note._id : undefined;
+
+    if (currentNoteid && currentNoteid !== prevNoteid) {
+      this.setState({
+        title: this.props.note.title,
+        body: this.props.note.body
+      });
+    }
+  }
   handleBodyChange(e) {
-    this.props.meteorCall('notes.update', this.props.note._id, {
-      body: e.target.value
-    });
+    const body = e.target.value;
+    this.setState({ body });
+    this.props.meteorCall('notes.update', this.props.note._id, { body });
   }
   handleTitleChange(e) {
-    this.props.meteorCall('notes.update', this.props.note._id, {
-      title: e.target.value
-    });
+    const title = e.target.value;
+    this.setState({ title });
+    this.props.meteorCall('notes.update', this.props.note._id, { title });
+  }
+  handleRemoval() {
+    this.props.meteorCall('notes.remove', this.props.note._id);
+    history.push('/dashboard');
   }
   render() {
     // console.log('props',this.props);
@@ -24,12 +48,12 @@ export class Editor extends React.Component {
       return (
         <div>
           <div>
-            <input type="text" value={this.props.note.title} onChange={this.handleTitleChange.bind(this)} placeholder="Untitled note"/>
+            <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} placeholder="Untitled note"/>
           </div>
           <div>
-            <textarea value={this.props.note.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}></textarea>
+            <textarea value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}></textarea>
           </div>
-          <button>Delete note</button>
+          <button onClick={ () => this.handleRemoval() }>Delete note</button>
         </div>
       );
     } else  {
@@ -46,7 +70,10 @@ export class Editor extends React.Component {
 }
 
 Editor.propTypes = {
-  note: PropTypes.object
+  note: PropTypes.object,
+  selectedNoteId: PropTypes.string,
+  meteorCall: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withTracker(()=>{
@@ -55,6 +82,7 @@ export default withTracker(()=>{
   return {
     selectedNoteId,
     note: Notes.findOne(selectedNoteId),
-    meteorCall: Meteor.call
+    meteorCall: Meteor.call,
+    history: history
   };
 })( Editor );
