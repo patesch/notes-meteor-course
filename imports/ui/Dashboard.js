@@ -25,12 +25,19 @@ import Editor from './Editor';
 
 // Container Components
 export class Dashboard extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   // console.log(props.history);
-  //   console.log(location.pathname.split('/')[2]);
-  //   props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
-  // }
+  constructor(props) {
+    super(props);
+    // console.log(props.history);
+    console.log(location.pathname.split('/')[2]);
+    props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
+
+    if (!Meteor.userId()) {
+      props.history.push('/');
+      console.log('Dashboard constructor: user is not logged in -> redirect to Login page');
+    } else {
+      console.log('Dashboard constructor: user is logged in -> kept in Dashboard page');
+    }
+  }
   // OR
   // componentWillMount ...
   componentWillMount() {
@@ -40,7 +47,7 @@ export class Dashboard extends React.Component {
   }
   render () {
     this.props.Session.set('selectedNoteId',location.pathname.split('/')[2]);
-    
+
     return (
       <div>
         <PrivateHeader title="Dashboard" history={this.props.history} />

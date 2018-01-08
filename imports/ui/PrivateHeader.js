@@ -31,7 +31,7 @@ export const PrivateHeader = (props) => {
     <div className="header">
       <div className="header__content">
         {/* <h1 className="header__title">{props.title}</h1> */}
-        <h1 className="header__title"><Link href="/dashboard" history={props.history}>{props.title}</Link></h1>
+        <h1 className="header__title"><Link className="dashboard" href="/dashboard" history={props.history}>{props.title}</Link></h1>
         <button className="button button--link-text" onClick={() => props.handleLogout() }>Logout</button>
       </div>
     </div>

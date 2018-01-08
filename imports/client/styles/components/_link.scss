@@ -1,4 +1,7 @@
 .link {
-  color: white;
+  color: #333; // white;
   text-decoration: none;
+  &.dashboard {
+    color: white;
+  }
 }
