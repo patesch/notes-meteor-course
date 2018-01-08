@@ -27,7 +27,7 @@ if (Meteor.isClient) {
       const wrapper = mount(<NoteListItem Session={Session} note={note}/>);
       const timeStamp = moment(note.updateAt).format('M/DD/YY');
 
-      expect(wrapper.find('h5').text()).toBe(note.title);
+      expect(wrapper.find('h5').first().text()).toBe(note.title);
       expect(wrapper.find('p').text()).toBe(timeStamp);
     });
 
@@ -35,7 +35,7 @@ if (Meteor.isClient) {
       const note = notes[1];
       const wrapper = mount(<NoteListItem Session={Session} note={note}/>);
 
-      expect(wrapper.find('h5').text()).toBe(defaultNoteTitle);
+      expect(wrapper.find('h5').first().text()).toBe(defaultNoteTitle);
     });
 
     it('should call set on click', function(){

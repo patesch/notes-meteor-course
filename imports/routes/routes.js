@@ -1,4 +1,5 @@
 import React from 'react';
+// import Router from 'react-router/BrowserRouter'
 // import { Switch, Router, Route, Redirect } from 'react-router'; // customize by Pedro to adjust to the version Meteor 1.6
 import { BrowserRouter, Router, Switch, Route, Redirect } from 'react-router-dom';
 

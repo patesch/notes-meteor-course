@@ -57,7 +57,7 @@ export class Dashboard extends React.Component {
             <NoteList/>
           </div>
           <div className="page-content__editor">
-            <Editor/>
+            <Editor history={this.props.history}/>
           </div>
         </div>
       </div>
