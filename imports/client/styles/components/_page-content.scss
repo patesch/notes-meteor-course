@@ -3,12 +3,16 @@
   height: $page-content-height;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $large-space $space;
+
+  @include desktop {
+    padding: $large-space $space;
+  }
 }
 .page-content__sidebar {
-  display: flex;
+  display: none;
+  // display: flex;
   flex-direction: column;
-  padding-right: $large-space;
+  padding-right: 0;
   width: $page-content-sitebar-width;
   // flex-grow: 2;
   // flex-shrink: 2;
@@ -16,7 +20,18 @@
 .page-content__main {
   display: flex;
   flex-direction: column;
-  width: $page-content-main-width;
+  width: 100%;
+  @include desktop {
+    width: $page-content-main-width;
+  }
   // flex-grow: 6;
   // flex-shrink: 6;
+}
+
+// MEDIA QUERIES
+@media (min-width: 50rem) {
+  .page-content__sidebar {
+    display: flex;
+    padding-right: $large-space;
+  }
 }
