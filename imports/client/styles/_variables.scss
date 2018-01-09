@@ -54,11 +54,7 @@ $boxed-view-bg: white;
 $boxed-view-border-color: $grey;
 
 // Item
-$item-bg: $light-grey;
-$item-border: darken($item-bg, 8%);
-
-// item text Color
-$item-text-color: $dark-grey;
+$item-border-width: 4px;
 
 // Page content
 $page-content-sitebar-width: 30rem;
