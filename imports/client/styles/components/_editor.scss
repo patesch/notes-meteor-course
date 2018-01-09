@@ -22,15 +22,16 @@
   outline: none;
   padding: $input-spacing;
   resize: none;
+  -webkit-overflow-scrolling: touch;
 
-  border: 1px solid $grey;
-  font-size: $base-font-size;
-  height: 100vh;
+  min-height: calc(100vh - 33rem);
   overflow-y: scroll;
+  // border: 1px solid $grey;
+  // font-size: $base-font-size;
 }
 .editor__message{
   text-align: center;
   margin: $large-space * 2;
   font-style: italic;
-  height: 100vh;  
+  height: 100vh;
 }

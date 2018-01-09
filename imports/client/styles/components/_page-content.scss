@@ -19,6 +19,7 @@
   bottom: 0;
   left: -100vw;
   right: 0;
+  z-index: 1;
 
   transition: left .3s linear;
 
@@ -39,6 +40,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: calc(100vh - $header-height);
   @include desktop {
     width: $page-content-main-width;
   }
