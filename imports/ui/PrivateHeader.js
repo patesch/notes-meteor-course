@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Accounts } from 'meteor/accounts-base';
+import { Session } from 'meteor/session';
 
 // import { Meteor } from 'meteor/meteor';
 
@@ -27,9 +28,11 @@ import Link from '../routes/link';
 // }
 
 export const PrivateHeader = (props) => {
+  const navImageSrc = props.isNavOpen ? '/images/x.svg' : '/images/bars.svg';
   return (
     <div className="header">
       <div className="header__content">
+        <img className="header__nav-toggle" src={navImageSrc} onClick={()=>props.handleNavToggle()}/>
         {/* <h1 className="header__title">{props.title}</h1> */}
         <h1 className="header__title"><Link className="dashboard" href="/dashboard" history={props.history}>{props.title}</Link></h1>
         <button className="button button--link-text" onClick={() => props.handleLogout() }>Logout</button>
@@ -49,16 +52,17 @@ export const PrivateHeader = (props) => {
 PrivateHeader.propTypes = {
   history: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  handleLogout: PropTypes.func.isRequired
+  handleLogout: PropTypes.func.isRequired,
+  handleNavToggle: PropTypes.func.isRequired,
+  isNavOpen: PropTypes.bool.isRequired
 };
 
 // export default createContainer(() => {
 export default withTracker(() => {
   return {
-    handleLogout: () => {
-      Accounts.logout();
-      // console.log('Meter userId', Meteor.userId());
-    }
+    handleLogout: () => Accounts.logout(),
+    handleNavToggle: () => Session.set('isNavOpen', !Session.get('isNavOpen')),
+    isNavOpen: Session.get('isNavOpen')
   };
 })( PrivateHeader );
 // }, PrivateHeader );
