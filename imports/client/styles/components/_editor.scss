@@ -3,5 +3,34 @@
   border: 1px solid $grey;
   display: flex;
   flex-direction: column;
+  padding: $large-space;
   width: 100%;
+}
+.editor__title {
+  border: none !important;
+  border-bottom: 2px solid $grey !important;
+  font-size: $large-font-size !important;
+  font-weight: bold;
+  margin-bottom: $large-space !important;
+  outline: none;
+  padding: $input-spacing !important;
+}
+.editor__body {
+  flex-grow: 1;
+  font-weight: 300;
+  margin-bottom: $large-space;
+  outline: none;
+  padding: $input-spacing;
+  resize: none;
+
+  border: 1px solid $grey;
+  font-size: $base-font-size;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.editor__message{
+  text-align: center;
+  margin: $large-space * 2;
+  font-style: italic;
+  height: 100vh;  
 }

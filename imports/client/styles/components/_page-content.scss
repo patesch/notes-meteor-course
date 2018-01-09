@@ -3,11 +3,12 @@
   height: $page-content-height;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $space;
+  padding: $large-space $space;
 }
 .page-content__sidebar {
   display: flex;
   flex-direction: column;
+  padding-right: $large-space;
   width: $page-content-sitebar-width;
   // flex-grow: 2;
   // flex-shrink: 2;

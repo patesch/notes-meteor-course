@@ -8,11 +8,12 @@ $special-grey: #e8e8e8;
 
 // Spacing
 $space: 1.3rem;
+$large-space: 2.8rem;
 $input-spacing: 1rem;
 $site-max-width: 100rem;
 
 // Font sizes
-$base-font-size: 1.4rem;
+$base-font-size: 1.6rem;
 $small-font-size: 1.2rem;
 $large-font-size: 2.4rem;
 
@@ -22,6 +23,8 @@ $base-font-family: Helvetica, Arial, sans-serif;
 // body
 $body-default-color: #333333 ;
 $body-background-color: $light-grey;
+$body-default-font-family: $base-font-family;
+$body-default-font-size: $base-font-size;
 
 // header
 $header-bg: $brand-primary;
